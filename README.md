@@ -22,12 +22,13 @@ AceIS is the integrated system that contains these components. Its design separa
 
 ## Draft design document
 
+- [Current design update: acc, native sysroot, Ace-Core, and verification](docs/design-update-2026-11-07.md)
 - [Integrated design principles and system vision, fifth-edition draft](docs/Project-KISS_design_v5_draft.en.md)
 - [Preserved fifth-edition source](docs/Project-KISS_design_v5_draft.md)
 
 This repository contains documentation only. Implementation code and experiment logs belong elsewhere. Directions, proposals, deferred decisions, and unverified ideas in the design document are not completed specifications or performance guarantees.
 
-The legacy name "Project-ACE" in the fifth edition refers to the subproject now managed on GitHub as "Project-AceIS." The original fifth-edition source is preserved unchanged for traceability. The English translation is the reading entry point.
+The legacy name "Project-ACE" in the fifth edition refers to the subproject now managed on GitHub as "Project-AceIS." The original fifth-edition source and its English translation are preserved unchanged for traceability. Read the current update for later directions and the English fifth edition for the baseline design.
 
 AceGeneralPublicLicense is a name under consideration in the design concept. The fifth edition does not replace license terms. Terms of use will be established separately.
 
