@@ -2,37 +2,42 @@
 
 **Keep It Simple, Stupid.**
 
-複雑なものを、複雑なまま人間に押し付けない。
+Do not leave people to deal with complexity that the system should handle.
 
-Project-KISSは、単純で、部品を置き換えられ、進化を続けられるシステムを作るための設計思想と全体構想を扱う。
+Project-KISS defines the design principles and overall vision for systems that are simple to use, built from replaceable components, and able to keep evolving.
 
-## 設計原則
+## Design principles
 
-- 必要な複雑さは適切な層が引き受け、利用者・開発者・運用者の負担を減らす。
-- 責務とインターフェースを分け、各部品を独立して改善・交換できる構造にする。
-- 最小の意味ある実装を動かし、観測・測定・独立した検証をもとに判断する。
-- 変更の根拠と結果を記録し、必要なときに戻せるようにする。
-- 利用者の自由と制御を守り、作る楽しさと使う楽しさを両立する。
+- Put necessary complexity in the appropriate layer to reduce the burden on users, developers, and operators.
+- Separate responsibilities and interfaces so that each component can be improved or replaced independently.
+- Run the smallest meaningful implementation, then make decisions through observation, measurement, and independent verification.
+- Record the reasons for changes and their results so that changes can be reversed when needed.
+- Protect users' freedom and control, and make both building and using the system rewarding.
 
-## この思想を基に作るもの
+## What we are building
 
-[Project-AceIS](https://github.com/orgs/i-pp/projects/2)をProject-KISSの管理下に置き、AceISとACE・PAUL・GENE・PETERの設計・実装・検証を進める。
+[Project-AceIS](https://github.com/orgs/i-pp/projects/2) is a subproject of Project-KISS. It coordinates the design, implementation, and verification of AceIS and its ACE, PAUL, GENE, and PETER components.
 
-AceISは、各コンポーネントを包含する統合システム。推論・検証・自己改善、プログラム解析、ネイティブコード生成、移植・変換の責務を分けて構成する。詳細な仕様と実装上の境界はDraft設計書の検討事項とする。
+AceIS is the integrated system that contains these components. Its design separates reasoning, verification, self-improvement, program analysis, native code generation, and portability and translation. Detailed specifications and implementation boundaries remain subjects for the draft design document.
 
-## Draft設計書
+## Draft design document
 
-- [設計思想・構想統合設計書 第5版ドラフト](docs/Project-KISS_design_v5_draft.md)
+- [Integrated design principles and system vision, fifth-edition draft](docs/Project-KISS_design_v5_draft.en.md)
+- [Preserved fifth-edition source](docs/Project-KISS_design_v5_draft.md)
 
-本リポジトリは文書専用とし、実装コードや実験ログは置かない。設計書の方針・提案・保留・未検証事項は、完成済み仕様や性能保証として扱わない。
+This repository contains documentation only. Implementation code and experiment logs belong elsewhere. Directions, proposals, deferred decisions, and unverified ideas in the design document are not completed specifications or performance guarantees.
 
-第5版本文に残る「Project-ACE」は、現在GitHub上で「Project-AceIS」として管理するサブプロジェクトの旧表記。第5版の原文は改変せず保存している。
+The legacy name "Project-ACE" in the fifth edition refers to the subproject now managed on GitHub as "Project-AceIS." The original fifth-edition source is preserved unchanged for traceability. The English translation is the reading entry point.
 
-AceGeneralPublicLicenseは設計構想中の名称であり、第5版はライセンス条文を代替しない。利用条件は別途確定する。
+AceGeneralPublicLicense is a name under consideration in the design concept. The fifth edition does not replace license terms. Terms of use will be established separately.
 
-## プロジェクト管理
+## Development policy
+
+Project-KISS and Project-AceIS use English for descriptions, documentation, issues, pull requests, and commit messages. Source code, including comments and string literals, must be ASCII-only. See the [shared development policy](docs/development-policy.md) for scope and verification guidance.
+
+## Project management
 
 - [Project-KISS](https://github.com/orgs/i-pp/projects/1)
 - [Project-AceIS](https://github.com/orgs/i-pp/projects/2)
 
-GitHub Projects間の管理関係は、相互リンクとこの文書で表す。
+The management relationship between the GitHub Projects is documented through these cross-links and this repository.
