@@ -80,6 +80,14 @@ This refines the implementation direction without turning the loader into the AC
 
 **[Policy]** QEMU or Renode may be used to make trials safer and repeatable where the selected machine model supports the PoC. **[Open]** Choose and document the actual supported execution mode and guest or machine configuration. A simulator name alone is not an isolation guarantee, and neither simulator is a mandatory dependency for every host unit test.
 
+### 3.3 Health Monitoring
+
+**[Policy]** Include health monitoring among AceIS's needed system capabilities. **[Proposal]** Provide it as a separately loaded native service or component, keeping monitoring policy outside the minimal Ace-Core loader. This is future work, not an existing implementation or a new prerequisite for the initial acc or loader PoC.
+
+**[Open]** Define the health/status contract, observed components and resources, and reporting mechanism. Distinguish liveness (whether a component is still responding) from readiness (whether it can safely provide the required service). Resource exhaustion, stalled work, failed initialization, and degraded dependencies need explicit treatment rather than a single process-alive flag.
+
+**[Open]** Define safe responses to each condition, including loss or failure of the monitor itself. Reporting, admission control, degradation, isolation, restart, and recovery are possible responses to evaluate, not approved automatic actions. Set authority, evidence, timing constraints, and failure behavior before selecting a response; monitoring alone does not establish system safety.
+
 ## 4. Linux ELF Compatibility and Future Windows Support
 
 ### 4.1 Routing Boundary
@@ -153,8 +161,9 @@ Begin with a bounded requirements/test matrix and failure analysis for the selec
 - **Native sysroot:** Record the smallest versioned native interface and component calling contract without making Linux compatibility mandatory.
 - **Ace-Core milestone:** Document the initial mmap semantics and controlled SO format, then demonstrate mapping, load, call, failure handling, and cleanup on a declared host or guest configuration.
 - **Verification baseline:** Define C1-C4 and feasible measurements; add CTest, CI, requirements traceability, failure analysis, and independent verification alongside implementation, recording gaps honestly.
+- **Health monitor:** Define the separately loaded service boundary, liveness/readiness and resource status, and safe behavior for monitored failures and monitor failure.
 - **Later work:** Linux compatibility syscall routing and ABI coverage, Windows/Wine evaluation, and live SO self-migration stay separate from initial milestone completion.
 
 ## Revision Record
 
-- 2026-11-07: Record the later acc target-SO design, native-sysroot priority, minimal loader/startup mapping direction, Linux-only compatibility routing, future Wine candidate, unresolved self-migration, and CTest/coverage/CI goals with a high-assurance engineering direction and independently assessable evidence. Preserve Version 5 and its translation for provenance.
+- 2026-11-07: Record the later acc target-SO design, native-sysroot priority, minimal loader/startup mapping direction, health-monitoring need, Linux-only compatibility routing, future Wine candidate, unresolved self-migration, and CTest/coverage/CI goals with a high-assurance engineering direction and independently assessable evidence. Preserve Version 5 and its translation for provenance.
