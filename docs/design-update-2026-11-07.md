@@ -133,7 +133,9 @@ The common policy is maintained in [development-policy.md](development-policy.md
 
 ### 6.2 High-Assurance Engineering Direction
 
-**[Policy]** Design testing from the outset with the rigor expected in automotive, aviation, and space engineering. This is an engineering objective, not a statement that the project is certified, qualifies for a safety level, or has already passed such verification. Claims about strict testing must identify the scope and evidence actually available.
+**[Policy]** Design testing from the outset with reference to assurance practices in automotive, aviation, and space engineering. The project is not certified and makes no standards-conformance claim. Claims about strict testing must identify the scope and evidence actually available.
+
+**[Policy]** Keep the verification evidence for each completed scope organized, traceable, and reproducible so independent assessors, including certification bodies, can inspect it at any time. Prepare an assessment package linking the exact revision, requirements, failure analyses, reproduction instructions, test and coverage results, independent reviews, and unresolved deviations. Claim readiness for independent assessment only for the scope for which that package is available. This describes evidence readiness; it does not guarantee an assessor's availability, agreement to review, finding of compliance, or certification.
 
 **[Proposal]** Scale assurance work to the component and its failure consequences, starting with the first acc and Ace-Core milestones:
 
@@ -155,4 +157,4 @@ Begin with a bounded requirements/test matrix and failure analysis for the selec
 
 ## Revision Record
 
-- 2026-11-07: Record the later acc target-SO design, native-sysroot priority, minimal loader/startup mapping direction, Linux-only compatibility routing, future Wine candidate, unresolved self-migration, and CTest/coverage/CI goals with a high-assurance engineering direction. Preserve Version 5 and its translation for provenance.
+- 2026-11-07: Record the later acc target-SO design, native-sysroot priority, minimal loader/startup mapping direction, Linux-only compatibility routing, future Wine candidate, unresolved self-migration, and CTest/coverage/CI goals with a high-assurance engineering direction and independently assessable evidence. Preserve Version 5 and its translation for provenance.

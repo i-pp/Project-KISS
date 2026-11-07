@@ -28,6 +28,8 @@ Each implementation repository must provide reproducible build, CTest, and suppo
 
 Aim from the outset for the engineering rigor expected in automotive, aviation, and space work. Scale requirements traceability, hazard/failure analysis, fault-oriented tests, and independent verification to the component's scope and consequences. Keep evidence linked to the exact revision and disclose unfinished checks and deviations. A coverage percentage or passing suite alone does not establish safety, certification, or compliance with an assurance level. Claims about strict testing must be supported by the actual scope and retained results.
 
+These fields inform the engineering approach; the project is not certified and makes no standards-conformance claim. Maintain a traceable, reproducible assessment package for each completed scope so independent assessors, including certification bodies, can inspect its records at any time. Include requirements, failure analyses, exact revisions and environments, reproduction instructions, test and coverage results, independent reviews, and unresolved deviations. Limit readiness claims to the scope with an available package; evidence readiness does not guarantee an assessor's availability, acceptance, or certification.
+
 See the [current design update](design-update-2026-11-07.md#6-testing-coverage-and-ci) for the relationship to the initial acc and Ace-Core milestones. This documentation policy does not create an implementation or establish that CI and coverage gates are already running.
 
 ## ASCII-only code
