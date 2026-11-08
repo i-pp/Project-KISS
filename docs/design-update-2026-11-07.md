@@ -22,9 +22,11 @@ These are development priorities, not evidence that a complete compiler, native 
 
 ### 1.1 Responsibilities
 
-**[Policy]** Use ace-cc / acc for the compiler direction. The acc executable selects the target and generates AIR. Target-dependent parts are managed as shared-object components (SOs) and dynamically loaded, so those parts can be versioned and upgraded separately.
+**[Policy]** Use ace-cc / acc for the compiler direction. The acc executable is the driver and orchestrator: it selects the target, coordinates AIR generation and target code generation, and loads the required components. Target-dependent code generation is managed as dynamically loaded shared-object components (SOs), so those parts can be versioned and upgraded separately.
 
-The PAUL / GENE / PETER responsibilities in Version 5 remain useful functional boundaries. Having acc own the AIR-generation path does not require all parsing and lowering code to be a single inseparable module. **[Open]** Whether AIR generation is linked into acc or exposed as a development-friendly SO remains undecided.
+The PAUL / GENE / PETER responsibilities in Version 5 remain useful functional boundaries. AIR generation is a compiler-component responsibility distinct from driver orchestration; the driver need not contain all parsing, semantic analysis, or lowering logic. **[Open]** Whether AIR generation is linked into acc or exposed as a development-friendly SO remains undecided.
+
+**[Open]** Define AIR format and version compatibility in the component interface contract between AIR producers and consumers, including target SOs. The contract must specify supported AIR versions and rejection of incompatible versions; the exact format and versioning scheme remain undecided.
 
 **[Policy]** The driver accepts CPU and architecture selection for cross compilation and selects corresponding target components to produce SIMD-native output. Linux as a target environment is an option; it is not the definition of the AceIS-native target. Do not confuse the Linux host running acc with the environment in which its generated binary will run.
 
@@ -157,13 +159,18 @@ Begin with a bounded requirements/test matrix and failure analysis for the selec
 
 ## 7. Next Design Decisions and Evidence
 
-- **acc milestone:** Select one target; define its minimum language/AIR scope, plugin boundary, output and execution contract, and a reproducible test result. Preserve the scalar comparison and crash-analysis directions from Version 5.
+- **acc milestone:** Select one target; define its minimum language/AIR scope, plugin boundary, output and execution contract, and a reproducible test result. Preserve the scalar comparison direction from Version 5.
+- **Compiler/debugger interfaces:** Preserve AIR-to-machine-code mapping, crash-dump analysis, and SIMD register/lane interpretation from Version 5 Sections 10.6-10.8 as shared compiler/debugger interface contracts. Tie mappings and analysis to matching AIR, generated binaries, and build identifiers. Define mapping behavior under optimization, available register state, and lane layout as part of that contract; their formats and validation remain open.
 - **Native sysroot:** Record the smallest versioned native interface and component calling contract without making Linux compatibility mandatory.
 - **Ace-Core milestone:** Document the initial mmap semantics and controlled SO format, then demonstrate mapping, load, call, failure handling, and cleanup on a declared host or guest configuration.
 - **Verification baseline:** Define C1-C4 and feasible measurements; add CTest, CI, requirements traceability, failure analysis, and independent verification alongside implementation, recording gaps honestly.
 - **Health monitor:** Define the separately loaded service boundary, liveness/readiness and resource status, and safe behavior for monitored failures and monitor failure.
 - **Later work:** Linux compatibility syscall routing and ABI coverage, Windows/Wine evaluation, and live SO self-migration stay separate from initial milestone completion.
 
+**[Policy]** Keep post-mortem state inspection distinct from execution-history tracing. A core dump captures available state when execution stops; it does not reconstruct the history of executed instructions and may be unavailable or incomplete. Execution-history tracing needs a separately defined recording mechanism. The staged crash-analysis path in Version 5 remains in effect; an interactive SIMD debugger or execution-history tracer is not a prerequisite for the initial PoC.
+
 ## Revision Record
+
+- 2026-11-08: Clarify acc driver orchestration, separate AIR-generation responsibility, and AIR format/version compatibility at component interfaces. Explicitly preserve shared compiler/debugger mapping, crash-analysis, and SIMD register/lane contracts, distinguishing post-mortem state inspection from execution-history tracing.
 
 - 2026-11-07: Record the later acc target-SO design, native-sysroot priority, minimal loader/startup mapping direction, health-monitoring need, Linux-only compatibility routing, future Wine candidate, unresolved self-migration, and CTest/coverage/CI goals with a high-assurance engineering direction and independently assessable evidence. Preserve Version 5 and its translation for provenance.
