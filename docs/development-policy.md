@@ -18,6 +18,20 @@ A compiler for Rust is also in scope. Rust is a language to compile, not a chang
 
 These are current development directions. Keep the preserved fifth-edition design source and its English translation faithful to their historical content rather than silently inserting later decisions into the translation.
 
+## Tests, coverage, and CI
+
+Every new development item must include repeatable tests and coverage measurement. Use CTest to orchestrate tests, with appropriate C/C++ frameworks such as GoogleTest / GoogleMock or Boost.Test. These are framework choices, not a requirement to combine every framework in each component. CTest and the test frameworks do not themselves measure structural coverage; select and document suitable instrumentation and reporting tools.
+
+The goal is 100% for each project-defined C1-C4 metric. Their formal definitions, measured scope, tool support, and feasibility remain open. Do not invent a numbering scheme, treat MC/DC as an adopted definition, or claim C1-C4 compliance based only on line/branch percentages. Before enforcing a threshold, define its denominator, instrumentation, build settings, exclusions, infeasible cases, exception review, and CI failure conditions.
+
+Each implementation repository must provide reproducible build, CTest, and supported coverage commands and run them in CI. Reports must identify the exact commit, discovered/executed tests, measured metrics and values, gaps, and exclusions. Retain raw coverage data and readable summaries. Treat unavailable metrics as unmeasured rather than 100%, and continue adding tests while definitions are settled.
+
+Aim from the outset for the engineering rigor expected in automotive, aviation, and space work. Scale requirements traceability, hazard/failure analysis, fault-oriented tests, and independent verification to the component's scope and consequences. Keep evidence linked to the exact revision and disclose unfinished checks and deviations. A coverage percentage or passing suite alone does not establish safety, certification, or compliance with an assurance level. Claims about strict testing must be supported by the actual scope and retained results.
+
+These fields inform the engineering approach; the project is not certified and makes no standards-conformance claim. Maintain a traceable, reproducible assessment package for each completed scope so independent assessors, including certification bodies, can inspect its records at any time. Include requirements, failure analyses, exact revisions and environments, reproduction instructions, test and coverage results, independent reviews, and unresolved deviations. Limit readiness claims to the scope with an available package; evidence readiness does not guarantee an assessor's availability, acceptance, or certification.
+
+See the [current design update](design-update-2026-11-07.md#6-testing-coverage-and-ci) for the relationship to the initial acc and Ace-Core milestones. This documentation policy does not create an implementation or establish that CI and coverage gates are already running.
+
 ## ASCII-only code
 
 ### Project-maintained source
