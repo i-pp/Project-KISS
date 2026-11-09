@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2026 I-plusplus Inc.
+SPDX-License-Identifier: LicenseRef-KOL-v1
+-->
+
 # Project-KISS
 
 **Keep It Simple, Stupid.**
@@ -30,7 +35,7 @@ This repository contains documentation only. Implementation code and experiment 
 
 The legacy name "Project-ACE" in the fifth edition refers to the subproject now managed on GitHub as "Project-AceIS." The original fifth-edition source and its English translation are preserved unchanged for traceability. Read the current update for later directions and the English fifth edition for the baseline design.
 
-AceGeneralPublicLicense is a name under consideration in the design concept. The fifth edition does not replace license terms. Terms of use will be established separately.
+KISS Open License Version 1.0 is published in [LICENSE](LICENSE). It applies only to expressly identified material, not to the whole repository. See the [licensing scope and header guide](docs/licensing/README.md) and [NOTICE](NOTICE). The listed first-party documents are covered through their file headers or exact-path sidecar notices. Both fifth-edition documents remain unchanged; their historical AceGeneralPublicLicense concept is not the operative license.
 
 ## Development policy
 
