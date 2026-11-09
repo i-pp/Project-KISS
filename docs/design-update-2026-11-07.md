@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2026 I-plusplus Inc.
+SPDX-License-Identifier: LicenseRef-KOL-v1
+-->
+
 # AceIS Design Update: acc, Native Sysroot, and Ace-Core
 
 - **Reference date:** 2026-11-07

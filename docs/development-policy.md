@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2026 I-plusplus Inc.
+SPDX-License-Identifier: LicenseRef-KOL-v1
+-->
+
 # Shared development policy
 
 This policy applies to work under Project-KISS and Project-AceIS, including the `Project-KISS`, `AceIS`, `ace`, `paul`, `gene`, and `peter` repositories in the `i-pp` organization.

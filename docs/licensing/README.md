@@ -15,30 +15,40 @@ It is a custom identifier, not an SPDX License List entry or an OSI approval.
 KOL applies only where an authorized rightsholder expressly identifies the
 material. A root LICENSE does not license the entire repository.
 
-The following new licensing materials are expressly identified under KOL v1:
+The following first-party documentation and licensing materials are expressly
+identified under KOL v1 with I-plusplus Inc. as rightsholder:
 
+- `README.md`
+- `docs/development-policy.md`
+- `docs/design-update-2026-11-07.md`
+- `docs/Project-KISS_design_v5_draft.md`
+- `docs/Project-KISS_design_v5_draft.en.md`
 - `NOTICE`
 - `docs/licensing/README.md`
 - `docs/licensing/KOL-v1-source-header.h.txt`
+- `docs/Project-KISS_design_v5_draft.md.license`
+- `docs/Project-KISS_design_v5_draft.en.md.license`
 
 The two complete license copies reproduce the license instrument without
 additional headers or clauses. The header template is a summary; it does not
 replace the complete license.
 
-This publication does not relicense these pre-existing documents:
+The README, development policy, and design update carry SPDX comments. Both
+Version 5 documents remain byte-for-byte unchanged; each accompanying `.license`
+file identifies the exact document and supplies its copyright and KOL notice.
+Keep that sidecar with the corresponding document when distributing it.
 
-- `README.md`
-- `docs/Project-KISS_design_v5_draft.md`
-- `docs/Project-KISS_design_v5_draft.en.md`
-- `docs/design-update-2026-11-07.md`
-- `docs/development-policy.md`
+This application is limited to the listed first-party material for which
+rightsholder authority and KOL application were confirmed. It does not grant
+rights in any third-party material. No third-party payload was identified in
+the bounded review of these five documentation files; references to external
+tools and specifications are not a grant over those external works.
 
-The README receives a licensing pointer only. Both Version 5 documents remain
-byte-for-byte unchanged. Before applying KOL to existing material, verify the
-actual rightsholder's authority, origin, contributor permissions, and any
-third-party or separately licensed portions. Repository control, a Git author,
-or AI assistance alone does not establish those rights. Keep uncertain material
-outside KOL application until that evidence is available.
+Before extending the list, verify the actual rightsholder's authority, origin,
+contributor permissions, and any third-party or separately licensed portions.
+Repository control, a Git author, or AI assistance alone does not establish
+those rights. Keep uncertain material outside KOL application until that
+evidence is available.
 
 No implementation, runtime, dependency, model, or other repository is licensed
 by this publication. References to external projects do not bring their
@@ -67,9 +77,9 @@ NOTICE attribution is:
 > contributors.
 
 Preserve that attribution under section 4(d) where it applies to included
-material. Project-KISS currently distributes licensing documentation, not an
-AceIS implementation. Its root NOTICE describes that narrower scope rather
-than claiming that software is included.
+material. Project-KISS currently distributes design and licensing documentation,
+not an AceIS implementation. Its root NOTICE describes that narrower scope
+rather than claiming that software is included.
 
 A NOTICE supplies attribution information and cannot add license conditions.
 Credit in an About screen or manual is optional. No credit is required solely

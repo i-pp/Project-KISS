@@ -1,15 +1,15 @@
-Project-KISS licensing materials
+Project-KISS documentation and licensing materials
 
 SPDX-FileCopyrightText: 2026 I-plusplus Inc.
 SPDX-License-Identifier: LicenseRef-KOL-v1
 
-These licensing materials concern Project-KISS and AceIS.
+This distribution includes Project-KISS and AceIS design documentation.
 AceIS is developed by I-plusplus and the AceIS contributors.
 
-This publication includes licensing documentation, not an AceIS implementation,
+This publication includes design and licensing documentation, not an AceIS implementation,
 runtime, dependency, or model. The applicable file scope is identified in
-docs/licensing/README.md. Pre-existing repository documents are not relicensed
-by this publication.
+docs/licensing/README.md and the file headers or exact-path sidecar notices.
+Both historical Version 5 documents retain their original bytes.
 
 This NOTICE supplies attribution information only. It does not add conditions
 to or modify KISS Open License Version 1.0. Attribution does not imply
