@@ -1,0 +1,81 @@
+# SPDX-FileCopyrightText: 2026 I-plusplus Inc.
+# SPDX-License-Identifier: LicenseRef-KOL-v1
+
+# Starter: copy to .github/workflows only after reviewing repository scope.
+# Whole-tree format/lint results are advisory; no build, test, coverage, or tidy gate.
+name: Coding Quality Baseline
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  format-and-lint:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install reference tool versions
+        run: python -m pip install clang-format==18.1.8 ruff==0.8.6
+      - name: Verify root configurations
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f .clang-format
+          test -f ruff.toml
+          clang-format --version
+          ruff --version
+          clang-format --style=file:.clang-format --dump-config > /dev/null
+          ruff check --config ruff.toml --stdin-filename config-check.py < /dev/null
+      - name: Check Python formatting and lint (advisory)
+        id: python
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          git ls-files -z -- '*.py' > "$RUNNER_TEMP/coding-python-files"
+          mapfile -d '' -t files < "$RUNNER_TEMP/coding-python-files"
+          echo "Selected ${#files[@]} tracked Python files."
+          if ((${#files[@]} == 0)); then
+            echo 'No tracked Python files selected; Python checks were not run.'
+            exit 0
+          fi
+          status=0
+          ruff format --check --config ruff.toml -- "${files[@]}" || status=1
+          ruff check --config ruff.toml -- "${files[@]}" || status=1
+          exit "$status"
+      - name: Check C/C++ formatting (advisory)
+        id: native
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          git ls-files -z -- '*.c' '*.h' '*.cc' '*.cpp' '*.cxx' '*.hpp' '*.hxx' \
+            > "$RUNNER_TEMP/coding-native-files"
+          mapfile -d '' -t files < "$RUNNER_TEMP/coding-native-files"
+          echo "Selected ${#files[@]} tracked C/C++ files."
+          if ((${#files[@]} == 0)); then
+            echo 'No tracked C/C++ files selected; native formatting was not run.'
+            exit 0
+          fi
+          clang-format --style=file:.clang-format --dry-run --Werror -- "${files[@]}"
+      - name: Record baseline outcomes
+        if: always()
+        env:
+          PYTHON_OUTCOME: ${{ steps.python.outcome }}
+          NATIVE_OUTCOME: ${{ steps.native.outcome }}
+        shell: bash
+        run: |
+          {
+            echo '## Advisory coding baseline'
+            echo "Commit: $GITHUB_SHA"
+            echo "Python step outcome: $PYTHON_OUTCOME"
+            echo "Native formatting step outcome: $NATIVE_OUTCOME"
+            echo 'See logs for selected-file counts and empty selections.'
+            echo 'No clang-tidy, build, tests, coverage, or ASCII discovery ran.'
+            echo 'This workflow does not implement a changed-code gate.'
+          } >> "$GITHUB_STEP_SUMMARY"
