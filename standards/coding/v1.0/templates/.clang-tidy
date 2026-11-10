@@ -4,13 +4,13 @@
 # Project-KISS Coding Standard v1.0
 # C++ starter: adapt checks and translation-unit selection for C separately.
 # Cognitive complexity is advisory and is not cyclomatic complexity.
+# Braces-around-statements is intentionally absent: unbraced simple bodies are allowed.
 Checks: >
   -*,
   bugprone-*,
   clang-analyzer-*,
   performance-*,
   portability-*,
-  readability-braces-around-statements,
   readability-identifier-naming,
   readability-function-cognitive-complexity,
   modernize-use-nullptr,
