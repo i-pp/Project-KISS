@@ -35,11 +35,15 @@ This repository contains documentation only. Implementation code and experiment 
 
 The legacy name "Project-ACE" in the fifth edition refers to the subproject now managed on GitHub as "Project-AceIS." The original fifth-edition source and its English translation are preserved unchanged for traceability. Read the current update for later directions and the English fifth edition for the baseline design.
 
-KISS Open License Version 1.0 is published in [LICENSE](LICENSE). It applies only to expressly identified material, not to the whole repository. See the [licensing scope and header guide](docs/licensing/README.md) and [NOTICE](NOTICE). The listed first-party documents are covered through their file headers or exact-path sidecar notices. Both fifth-edition documents remain unchanged; their historical AceGeneralPublicLicense concept is not the operative license.
+KISS Open License Version 1.0 is published in [LICENSE](LICENSE). It applies only to expressly identified material, not to the whole repository. See the [licensing scope and header guide](docs/licensing/README.md) and [NOTICE](NOTICE). The listed first-party files are covered through their file headers or exact-path sidecar notices. Both fifth-edition documents remain unchanged; their historical AceGeneralPublicLicense concept is not the operative license.
 
 ## Development policy
 
 Project-KISS and Project-AceIS use English for descriptions, documentation, issues, pull requests, and commit messages. Source code, including comments and string literals, must be ASCII-only. See the [shared development policy](docs/development-policy.md) for scope and verification guidance.
+
+The versioned [coding standard and agent policy](standards/coding/v1.0/README.md)
+provide common guidance and integration templates. Tool and CI activation remain
+repository-specific.
 
 ## Project management
 
