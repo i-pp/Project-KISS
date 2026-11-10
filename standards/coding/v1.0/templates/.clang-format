@@ -2,12 +2,20 @@
 # SPDX-License-Identifier: LicenseRef-KOL-v1
 
 # Project-KISS Coding Standard v1.0
-BasedOnStyle: LLVM
+# Conservative normalization, not the complete set of policy-permitted forms.
+# None disables formatting unless DisableFormat is explicitly reset.
+BasedOnStyle: None
+DisableFormat: false
 IndentWidth: 4
 TabWidth: 4
 UseTab: Never
 ColumnLimit: 100
-BreakBeforeBraces: Allman
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+  AfterControlStatement: Never
+  BeforeElse: false
+  BeforeWhile: false
 IndentCaseLabels: false
 IndentAccessModifiers: false
 PointerAlignment: Left
@@ -16,6 +24,8 @@ SpaceBeforeParens: ControlStatements
 SpacesInParentheses: false
 SpacesInSquareBrackets: false
 AllowShortFunctionsOnASingleLine: None
+# Do not join a multiline ternary body to its control statement.
+# Simple single-line controls remain policy-permitted; this formatter expands them.
 AllowShortIfStatementsOnASingleLine: Never
 AllowShortLoopsOnASingleLine: false
 AllowShortBlocksOnASingleLine: Never
