@@ -66,10 +66,17 @@ before applying formatting changes.
    selection, baseline handling, required checks, and exception review before
    enabling a mandatory quality gate.
 
-The Python template targets Python 3.11. This is a starter assumption, not a
-minimum Python version established by the standard. The workflow uses Python
-3.11 and runs Ruff only on tracked `.py` files. It reports empty Python and native
-selections as checks not run. An empty result is not source-policy compliance.
+The workflow selects the GitHub-hosted Ubuntu 26.04 image and explicitly selects
+Python 3.14 with `actions/setup-python`. This selection is independent of the OS
+default interpreter. The Ruff template retains `target-version = "py311"` as its
+minimum source-compatibility target; it does not select the interpreter running
+Ruff or require CI to run on Python 3.11. This target is a supplied starter
+assumption, not a minimum Python version established by the standard. Ruff 0.8.6
+does not accept `py314` as a target, so changing the compatibility target would
+require a separate tooling and source-support decision.
+
+The workflow runs Ruff only on tracked `.py` files. It reports empty Python and
+native selections as checks not run. An empty result is not source-policy compliance.
 
 ## What the templates do not establish
 
@@ -104,6 +111,8 @@ Integration changes are:
   select tracked files safely, make format/lint findings advisory, and report
   empty selections and missing analysis stages explicitly. clang-tidy is not
   installed by a job that does not run it.
+- Select Ubuntu 26.04 and Python 3.14 explicitly for the workflow while retaining
+  the supplied Ruff source-compatibility target.
 - Expand this README with integration commands, compatibility notes, and limits.
 
 The supplied package had no copyright or license declaration. KOL v1 application
