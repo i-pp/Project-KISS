@@ -18,7 +18,7 @@ This update records the directions discussed after Version 5. It takes precedenc
 
 1. Advance acc toward a working C/C++ compiler implementation on a Linux host, generating AIR and then a SIMD-native binary for one selected target.
 2. Define the minimum AceIS-native sysroot and component contract before expanding Linux compatibility.
-3. Explore Ace-Core as a Linux-hosted PoC with a minimal dynamic loader and a project-owned initial memory-mapping implementation.
+3. Develop Ace-Core as a BSP-independent minimal dynamic-loader resident, with architecture/CPU/board support separated into Abiss. Retain the Linux-hosted loader/mapping PoC as distinct compatibility and reference work.
 4. Include automated tests, measured coverage, and CI with every new development item. The goal is 100% for each project-defined C1-C4 metric, once definitions and measurement feasibility are established.
 
 These are development priorities, not evidence that a complete compiler, native sysroot, runtime, or compatibility layer already exists. Implementation and experiment records belong in their designated repositories, not this documentation-only repository.
@@ -95,6 +95,20 @@ This refines the implementation direction without turning the loader into the AC
 
 **[Open]** Define safe responses to each condition, including loss or failure of the monitor itself. Reporting, admission control, degradation, isolation, restart, and recovery are possible responses to evaluate, not approved automatic actions. Set authority, evidence, timing constraints, and failure behavior before selecting a response; monitoring alone does not establish system safety.
 
+### 3.4 Abiss BSP Separation and Cross-Build Direction
+
+**[Policy]** Ace-Core is a BSP-independent dynamic-loader resident unit. Architecture, CPU-family and board-specific startup and hardware support belong in Abiss, not in the Core loader. The native Core and Abiss components are intended to be cross-built with acc for a selected target. BSP-independent source still produces target-specific machine code; host and target contracts remain distinct.
+
+**[Policy]** Select AArch64 and x86-64 (amd64) BSP profiles explicitly during the build rather than silently selecting the build host's architecture. Keep CPU and board assumptions explicit within each architecture family. Supporting both is a development direction, not a claim that both profiles currently build or boot.
+
+**[Policy]** Manage Abiss in a dedicated repository with a clear build entry. **[Proposal]** Begin with one repository containing common code and architecture/board subdirectories. Separate a subtree only when demonstrated ownership, release or dependency needs justify another repository. Avoid many empty repositories or opaque build layers. Use an Abiss project/board to track target work, dependencies and verification status. Repository creation and project management are not implementation evidence.
+
+**[Open]** Define the minimum Core-entry contract, handoff memory ownership and lifetime, early output, executable preparation/cache synchronization, CPU privilege and FP/SIMD state, and hardware wait/halt policy. Abiss should consume Core's declared interface; Core must not depend on a BSP implementation. Native target entry rules remain explicit Core/toolchain contracts, not assumptions inferred from the host or a board. A provisional fixture must not be mistaken for the production boot or native MO ABI.
+
+**[Open]** Specify the compiler language, target, sysroot/runtime, object/link and assembly capabilities required to build these units with acc. Reference builds using another compiler must be labeled as reference evidence, not acc output. Unsupported acc paths must be reported as unimplemented, without silent fallback.
+
+**[Proposal]** Deliver the boundary in small test-driven slices: the Core-owned provisional contract and one existing BSP first, then separately evidenced additional target compilation, boot and activation. Use CTest, independent mocks, actual dependency/artifact closure checks and declared guest profiles. A mock-only model does not prove the production code; host mocks, guest results and hardware measurements have different scopes. Preserve incomplete targets, missing instrumentation and remaining source paths as visible gaps.
+
 ## 4. Linux ELF Compatibility and Future Windows Support
 
 ### 4.1 Routing Boundary
@@ -133,6 +147,8 @@ CTest schedules and reports tests; unit-test frameworks provide assertions and m
 
 **[Policy]** Aim for 100% for each of C1-C4. The project has not yet defined those labels, their measured scope, or a feasible toolchain for every level. Do not equate them with another standard's numbered criteria or claim C1-C4 compliance from line/branch coverage alone. Version 5's MC/DC reference remains a candidate, not an adopted mapping.
 
+**[Policy]** Keep Ace-Core development on PoC branches until each of the four adopted project metrics reaches 100% in PoC CI for the exact candidate. Do not admit Ace-Core to main while a criterion is undefined, unmeasured or unmet. Passing minimum administrative CI, a hosted mock subset or another component's tests does not satisfy this condition. Definitions, measurement feasibility and exclusions must be explicitly reviewed, not silently selected to make a gate pass.
+
 Before a C1-C4 gate is enforceable, record:
 
 1. The formal definition and denominator for each metric.
@@ -167,7 +183,7 @@ Begin with a bounded requirements/test matrix and failure analysis for the selec
 - **acc milestone:** Select one target; define its minimum language/AIR scope, plugin boundary, output and execution contract, and a reproducible test result. Preserve the scalar comparison direction from Version 5.
 - **Compiler/debugger interfaces:** Preserve AIR-to-machine-code mapping, crash-dump analysis, and SIMD register/lane interpretation from Version 5 Sections 10.6-10.8 as shared compiler/debugger interface contracts. Tie mappings and analysis to matching AIR, generated binaries, and build identifiers. Define mapping behavior under optimization, available register state, and lane layout as part of that contract; their formats and validation remain open.
 - **Native sysroot:** Record the smallest versioned native interface and component calling contract without making Linux compatibility mandatory.
-- **Ace-Core milestone:** Document the initial mmap semantics and controlled SO format, then demonstrate mapping, load, call, failure handling, and cleanup on a declared host or guest configuration.
+- **Ace-Core / Abiss milestone:** Define the BSP-independent loader resident boundary and Core-owned entry/services contract, extract one declared BSP profile, and demonstrate the split with scoped tests and failure evidence. Keep the Linux-hosted mmap/controlled-SO experiment distinct; specify its mapping, load, call and cleanup semantics without presenting it as a native boot contract.
 - **Verification baseline:** Define C1-C4 and feasible measurements; add CTest, CI, requirements traceability, failure analysis, and independent verification alongside implementation, recording gaps honestly.
 - **Health monitor:** Define the separately loaded service boundary, liveness/readiness and resource status, and safe behavior for monitored failures and monitor failure.
 - **Later work:** Linux compatibility syscall routing and ABI coverage, Windows/Wine evaluation, and live SO self-migration stay separate from initial milestone completion.
@@ -175,6 +191,8 @@ Begin with a bounded requirements/test matrix and failure analysis for the selec
 **[Policy]** Keep post-mortem state inspection distinct from execution-history tracing. A core dump captures available state when execution stops; it does not reconstruct the history of executed instructions and may be unavailable or incomplete. Execution-history tracing needs a separately defined recording mechanism. The staged crash-analysis path in Version 5 remains in effect; an interactive SIMD debugger or execution-history tracer is not a prerequisite for the initial PoC.
 
 ## Revision Record
+
+- 2026-11-12: Record the BSP-independent Core / dedicated Abiss direction, explicit AArch64 and amd64 target profiles, staged reference versus acc cross-build evidence, and Ace-Core PoC coverage admission gate. No implementation, ABI adoption, target support or measured coverage is claimed.
 
 - 2026-11-08: Clarify acc driver orchestration, separate AIR-generation responsibility, and AIR format/version compatibility at component interfaces. Explicitly preserve shared compiler/debugger mapping, crash-analysis, and SIMD register/lane contracts, distinguishing post-mortem state inspection from execution-history tracing.
 
