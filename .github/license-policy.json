@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "licenses": {
+    "LicenseRef-KOL-v1": {
+      "path": "LICENSE",
+      "sha256": "df951a913ed6f5fe319b9e1b1a3cc2b6e396ea65b9d1687b9f735bd8f117ea9c"
+    }
+  },
+  "notice": {
+    "path": "NOTICE",
+    "required_text": [
+      "I-plusplus Inc."
+    ]
+  },
+  "rules": [
+    {
+      "paths": [
+        ".github/workflows/baseline.yml",
+        "docs/licensing/KOL-v1-source-header.h.txt",
+        "scripts/check_baseline.py",
+        "tests/test_baseline.py",
+        "docs/license-evidence-scope.md"
+      ],
+      "kind": "first_party",
+      "license": "LicenseRef-KOL-v1",
+      "header": "spdx",
+      "header_markers": [
+        "KISS Open License Version 1.0 (KOL-v1)",
+        "SPDX-FileCopyrightText: 2026 I-plusplus Inc.",
+        "SPDX-License-Identifier: LicenseRef-KOL-v1",
+        "Distributed modifications must be identified",
+        "WITHOUT WARRANTY OR LIABILITY",
+        "See the accompanying LICENSE file"
+      ]
+    },
+    {
+      "paths": [
+        "LICENSE",
+        "LICENSES/LicenseRef-KOL-v1.txt",
+        "NOTICE",
+        ".github/license-policy.json"
+      ],
+      "kind": "first_party",
+      "license": "LicenseRef-KOL-v1",
+      "header": "root"
+    },
+    {
+      "paths": [
+        "README.md",
+        "docs/Project-KISS_design_v5_draft.en.md.license",
+        "docs/Project-KISS_design_v5_draft.md.license",
+        "docs/ci.md",
+        "docs/design-update-2026-11-07.md",
+        "docs/development-policy.md",
+        "docs/licensing/README.md",
+        "standards/coding/v1.0/AGENT_CODING_POLICY.md",
+        "standards/coding/v1.0/CODING_STANDARD.md",
+        "standards/coding/v1.0/README.md",
+        "standards/coding/v1.0/ci/coding-quality.yml",
+        "standards/coding/v1.0/templates/.clang-format",
+        "standards/coding/v1.0/templates/.clang-tidy",
+        "standards/coding/v1.0/templates/.editorconfig",
+        "standards/coding/v1.0/templates/ruff.toml"
+      ],
+      "kind": "first_party",
+      "license": "LicenseRef-KOL-v1",
+      "header": "spdx"
+    },
+    {
+      "paths": [
+        "docs/Project-KISS_design_v5_draft.en.md"
+      ],
+      "kind": "first_party",
+      "license": "LicenseRef-KOL-v1",
+      "header": "root",
+      "evidence": "docs/Project-KISS_design_v5_draft.en.md.license"
+    },
+    {
+      "paths": [
+        "docs/Project-KISS_design_v5_draft.md"
+      ],
+      "kind": "first_party",
+      "license": "LicenseRef-KOL-v1",
+      "header": "root",
+      "evidence": "docs/Project-KISS_design_v5_draft.md.license"
+    }
+  ]
+}
