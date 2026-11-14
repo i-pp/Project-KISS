@@ -77,15 +77,15 @@ This refines the implementation direction without turning the loader into the AC
 
 **[Open]** Define the bootstrap boundary: the minimum mapping, relocation, symbol resolution, and initialization support that must exist before external SOs can provide services. Pre-mapping a component is not sufficient evidence that its dependencies, relocations, permissions, or startup order are correct.
 
-### 3.2 Initial Linux-Hosted PoC
+### 3.2 Linux-Hosted Loader and Mapping Reference Experiment
 
-**[Policy]** Explore a Linux application implementing the smallest useful dynamic loader together with a project-owned initial mmap facility for that loader. This is an early Ace-Core PoC, not a replacement kernel or a completed native memory subsystem.
+**[Policy]** Retain the Linux application with a minimal dynamic loader and a project-owned initial mmap facility as a separate hosted loader/mapping reference experiment. It may inform compatibility and native-loader research, but it is not the BSP-independent native Ace-Core / Abiss boot PoC. Its results cover only the declared Linux host or guest configuration and exercised behavior; they do not establish native entry/services conformance or boot support, or satisfy the Ace-Core admission gate in [Section 6.1](#61-repeatable-tests-and-defined-coverage).
 
 **[Open]** Specify whether the initial mmap facility manages a reserved region, wraps Linux mapping primitives, or uses another explicitly bounded mechanism. While it is a Linux application, virtual-memory protection and backing still depend on the host or guest Linux kernel. Do not present a wrapper or allocator as a completed independent VM implementation.
 
-**[Proposal]** Make the first observable outcome loading one controlled test component, resolving an entry point, calling it through the defined interface, and verifying the returned result and resource cleanup. Include mapping failures, invalid images, alignment and size checks, dependency failures, and initialization failures in its test plan. Keep Linux compatibility, live state migration, and full self-hosting outside this first outcome.
+**[Proposal]** For this hosted reference experiment, make the first observable outcome loading one controlled test component, resolving an entry point, calling it through the defined interface, and verifying the returned result and resource cleanup. Include mapping failures, invalid images, alignment and size checks, dependency failures, and initialization failures in its test plan. Keep Linux compatibility, live state migration, and full self-hosting outside this first outcome.
 
-**[Policy]** QEMU or Renode may be used to make trials safer and repeatable where the selected machine model supports the PoC. **[Open]** Choose and document the actual supported execution mode and guest or machine configuration. A simulator name alone is not an isolation guarantee, and neither simulator is a mandatory dependency for every host unit test.
+**[Policy]** QEMU or Renode may be used to make trials safer and repeatable where the selected machine model supports this hosted experiment. **[Open]** Choose and document the actual supported execution mode and guest or machine configuration. A simulator name alone is not an isolation guarantee, and neither simulator is a mandatory dependency for every host unit test.
 
 ### 3.3 Health Monitoring
 
@@ -191,6 +191,8 @@ Begin with a bounded requirements/test matrix and failure analysis for the selec
 **[Policy]** Keep post-mortem state inspection distinct from execution-history tracing. A core dump captures available state when execution stops; it does not reconstruct the history of executed instructions and may be unavailable or incomplete. Execution-history tracing needs a separately defined recording mechanism. The staged crash-analysis path in Version 5 remains in effect; an interactive SIMD debugger or execution-history tracer is not a prerequisite for the initial PoC.
 
 ## Revision Record
+
+- 2026-11-14: Classify Section 3.2 consistently as a separate Linux-hosted loader/mapping reference experiment. Limit its evidence to the exercised hosted configuration; native Core / Abiss boot evidence and the Ace-Core admission gate remain separate.
 
 - 2026-11-12: Record the BSP-independent Core / dedicated Abiss direction, explicit AArch64 and amd64 target profiles, staged reference versus acc cross-build evidence, and Ace-Core PoC coverage admission gate. No implementation, ABI adoption, target support or measured coverage is claimed.
 
