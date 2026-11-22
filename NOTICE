@@ -9,8 +9,9 @@ AceIS is developed by I-plusplus and the AceIS contributors.
 
 This publication includes design and licensing documentation, coding policies, and
 configuration templates, not an AceIS implementation, runtime, dependency, or model. The applicable file scope is identified in
-docs/licensing/README.md and the file headers or exact-path sidecar notices.
-Both historical Version 5 documents retain their original bytes.
+docs/licensing/README.md and the in-file notices.
+Both historical Version 5 documents retain their original design text;
+only their licensing notices were added.
 
 This NOTICE supplies attribution information only. It does not add conditions
 to or modify KISS Open License Version 1.0. Attribution does not imply
