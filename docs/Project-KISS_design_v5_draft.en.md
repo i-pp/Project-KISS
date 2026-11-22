@@ -1,5 +1,12 @@
 # Project-KISS / Project-ACE / AceIS: Integrated Design Philosophy and Concept Document (Version 5 Draft)
 
+<!--
+SPDX-FileCopyrightText: 2026 I-plusplus Inc.
+SPDX-License-Identifier: LicenseRef-KOL-v1
+-->
+
+> Copyright (c) 2026 I-plusplus Inc. Licensed under the [KISS Open License Version 1.0](../LICENSE).
+
 > Translation note: This is an English translation of `docs/Project-KISS_design_v5_draft.md` in `i-pp/Project-KISS`, source blob `5ee43501ab0e115be39c58161cae8b8bf05a7aa1`. Historical terminology, including Project-ACE, is preserved; the active management name is now Project-AceIS. This translation does not revise the original design decisions or their status.
 
 -   **Document type:** Integrated document covering concepts, design philosophy, and initial architecture (a working draft for project management)

@@ -26,8 +26,6 @@ are expressly identified under KOL v1 with I-plusplus Inc. as rightsholder:
 - `NOTICE`
 - `docs/licensing/README.md`
 - `docs/licensing/KOL-v1-source-header.h.txt`
-- `docs/Project-KISS_design_v5_draft.md.license`
-- `docs/Project-KISS_design_v5_draft.en.md.license`
 - `standards/coding/v1.0/AGENT_CODING_POLICY.md`
 - `standards/coding/v1.0/CODING_STANDARD.md`
 - `standards/coding/v1.0/README.md`
@@ -41,11 +39,10 @@ The two complete license copies reproduce the license instrument without
 additional headers or clauses. The header template is a summary; it does not
 replace the complete license.
 
-The README, development policy, design update, coding policies, and configuration
-templates carry SPDX comments appropriate to their file formats. Both
-Version 5 documents remain byte-for-byte unchanged; each accompanying `.license`
-file identifies the exact document and supplies its copyright and KOL notice.
-Keep that sidecar with the corresponding document when distributing it.
+The listed Markdown and configuration files carry SPDX comments appropriate to
+their file formats. Both Version 5 documents also display the copyright and KOL
+notice in the rendered document. Their design text is unchanged; the notices
+formerly kept in separate files now travel with each document.
 
 This application is limited to the listed first-party material for which
 rightsholder authority and KOL application were confirmed. It does not grant

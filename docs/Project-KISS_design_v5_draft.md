@@ -1,5 +1,12 @@
 # Project-KISS / Project-ACE / AceIS 設計思想・構想統合設計書(第5版ドラフト)
 
+<!--
+SPDX-FileCopyrightText: 2026 I-plusplus Inc.
+SPDX-License-Identifier: LicenseRef-KOL-v1
+-->
+
+> Copyright (c) 2026 I-plusplus Inc. Licensed under the [KISS Open License Version 1.0](../LICENSE).
+
 -   **文書種別:** 構想・設計思想・初期アーキテクチャ統合文書(プロジェクト管理用のたたき台)
 -   **基準日:** 2026-11-07
 -   **版:** 第5版ドラフト（第4版を継承。修正履歴は文末、ADR候補は第18節）
