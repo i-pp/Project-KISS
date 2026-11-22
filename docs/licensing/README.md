@@ -19,6 +19,7 @@ The following first-party documentation, configuration, and licensing materials
 are expressly identified under KOL v1 with I-plusplus Inc. as rightsholder:
 
 - `README.md`
+- `docs/aceis-product-vision.md`
 - `docs/development-policy.md`
 - `docs/design-update-2026-11-07.md`
 - `docs/Project-KISS_design_v5_draft.md`

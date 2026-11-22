@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2026 I-plusplus Inc.
+SPDX-License-Identifier: LicenseRef-KOL-v1
+-->
+
 # AceIS Product Vision and Engineering Targets
 
 **Status: Vision and design targets.** This is the proposed shared direction for AceIS, not an implementation specification or a release commitment.
