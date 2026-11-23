@@ -47,8 +47,8 @@
     {
       "paths": [
         "README.md",
-        "docs/Project-KISS_design_v5_draft.en.md.license",
-        "docs/Project-KISS_design_v5_draft.md.license",
+        "docs/Project-KISS_design_v5_draft.en.md",
+        "docs/Project-KISS_design_v5_draft.md",
         "docs/aceis-product-vision.md",
         "docs/ci.md",
         "docs/design-update-2026-11-07.md",
@@ -66,24 +66,6 @@
       "kind": "first_party",
       "license": "LicenseRef-KOL-v1",
       "header": "spdx"
-    },
-    {
-      "paths": [
-        "docs/Project-KISS_design_v5_draft.en.md"
-      ],
-      "kind": "first_party",
-      "license": "LicenseRef-KOL-v1",
-      "header": "root",
-      "evidence": "docs/Project-KISS_design_v5_draft.en.md.license"
-    },
-    {
-      "paths": [
-        "docs/Project-KISS_design_v5_draft.md"
-      ],
-      "kind": "first_party",
-      "license": "LicenseRef-KOL-v1",
-      "header": "root",
-      "evidence": "docs/Project-KISS_design_v5_draft.md.license"
     }
   ]
 }

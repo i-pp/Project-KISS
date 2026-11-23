@@ -10,7 +10,7 @@ SPDX-License-Identifier: LicenseRef-KOL-v1
 - **Baseline:** [Version 5 English translation](Project-KISS_design_v5_draft.en.md)
 - **Scope:** Later compiler, runtime, compatibility, and verification directions
 
-This update records the directions discussed after Version 5. It takes precedence only where it explicitly updates that draft. All other Version 5 content remains in place. The preserved fifth-edition source and its English translation remain unchanged.
+This update records the directions discussed after Version 5. It takes precedence only where it explicitly updates that draft. All other Version 5 content remains in place. The fifth-edition source and its English translation retain their original design text; only the licensing notices were added.
 
 **[Policy]** identifies a direction stated by the designer, **[Proposal]** identifies a validation or implementation approach still to review, **[Open]** identifies an unresolved contract, and **[Unverified goal]** identifies an outcome requiring evidence. None of these labels means a feature has been implemented.
 
