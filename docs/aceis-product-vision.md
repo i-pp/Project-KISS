@@ -11,7 +11,9 @@ SPDX-License-Identifier: LicenseRef-KOL-v1
 
 AceIS is a new generation of operating system that we call an IS: Integrated / Intelligence / Individual System. SIMD-native AI is part of the system's foundation. We are redesigning how people work, play, and use computers around native intelligence, rather than adding an AI application to an existing OS. The system should handle the complexity of coordination while keeping meaningful decisions and control with the person using it.
 
-An individual AI should grow with its user. It can benefit from updates synchronized with other AI individuals while retaining its own identity. A hub-based neural network with bypass paths is a design direction for making that communication fast and secure. A shorter path must retain the same required protections.
+An individual AI should grow with its user. It can benefit from updates synchronized with other AI individuals while retaining its own identity.
+
+Separately, explore a hub-based neural network with bypass paths as a communications design goal. Any shorter path must retain the same required protections.
 
 ## Engineering Targets
 
