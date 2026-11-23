@@ -27,6 +27,7 @@ AceIS is the integrated system that contains these components. Its design separa
 
 ## Draft design document
 
+- [AceIS product vision and engineering targets](docs/aceis-product-vision.md)
 - [Current design update: acc, native sysroot, Ace-Core, and verification](docs/design-update-2026-11-07.md)
 - [Integrated design principles and system vision, fifth-edition draft](docs/Project-KISS_design_v5_draft.en.md)
 - [Preserved fifth-edition source](docs/Project-KISS_design_v5_draft.md)
